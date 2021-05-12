@@ -15,7 +15,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [UserController::class, 'index'])->name('home');
-Route::view('/about', 'user.about');
-Route::view('/service', 'user.service');
-Route::view('/team', 'user.team');
-Route::view('/contact', 'user.contact');
+Route::get('/about', [UserController::class, 'about'])->name('about');
+Route::get('/service', [UserController::class, 'service'])->name('service');
+Route::get('/team', [UserController::class, 'team'])->name('team');
+Route::get('/contact', [UserController::class, 'contact'])->name('contact');

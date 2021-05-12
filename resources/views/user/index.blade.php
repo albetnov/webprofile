@@ -10,29 +10,29 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="{{ asset('user') }}/img/carousel-1.jpg" alt="Carousel Image">
+            <img src="{{ asset('user') }}/img/{{ $ipg->img_c1 }}" alt="Carousel Image">
             <div class="carousel-caption">
-                <p class="animated fadeInRight">We Are Professional</p>
-                <h1 class="animated fadeInLeft">For Your Dream Project</h1>
-                <a class="btn animated fadeInUp" href="https://htmlcodex.com/construction-company-website-template">Get A Quote</a>
+                <p class="animated fadeInRight">{{ $ipg->title_c1 }}</p>
+                <h1 class="animated fadeInLeft">{{ $ipg->desc_c1 }}</h1>
+                <a class="btn animated fadeInUp" href="#">Get A Quote</a>
             </div>
         </div>
 
         <div class="carousel-item">
-            <img src="{{ asset('user') }}/img/carousel-2.jpg" alt="Carousel Image">
+            <img src="{{ asset('user') }}/img/{{ $ipg->img_c2 }}" alt="Carousel Image">
             <div class="carousel-caption">
-                <p class="animated fadeInRight">Professional Builder</p>
-                <h1 class="animated fadeInLeft">We Build Your Home</h1>
-                <a class="btn animated fadeInUp" href="https://htmlcodex.com/construction-company-website-template">Get A Quote</a>
+                <p class="animated fadeInRight">{{ $ipg->title_c2 }}</p>
+                <h1 class="animated fadeInLeft">{{ $ipg->desc_c2 }}</h1>
+                <a class="btn animated fadeInUp" href="#">Get A Quote</a>
             </div>
         </div>
 
         <div class="carousel-item">
-            <img src="{{ asset('user') }}/img/carousel-3.jpg" alt="Carousel Image">
+            <img src="{{ asset('user') }}/img/{{ $ipg->img_c3 }}" alt="Carousel Image">
             <div class="carousel-caption">
-                <p class="animated fadeInRight">We Are Trusted</p>
-                <h1 class="animated fadeInLeft">For Your Dream Home</h1>
-                <a class="btn animated fadeInUp" href="https://htmlcodex.com/construction-company-website-template">Get A Quote</a>
+                <p class="animated fadeInRight">{{ $ipg->title_c3 }}</p>
+                <h1 class="animated fadeInLeft">{{ $ipg->desc_c3 }}</h1>
+                <a class="btn animated fadeInUp" href="#">Get A Quote</a>
             </div>
         </div>
     </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="feature-text">
                         <h3>Expert Worker</h3>
-                        <p>Lorem ipsum dolor sit amet elit. Phasus nec pretim ornare velit non</p>
+                        <p>Di kerjakan dengan para staff yang berpengalaman</p>
                     </div>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                     </div>
                     <div class="feature-text">
                         <h3>Quality Work</h3>
-                        <p>Lorem ipsum dolor sit amet elit. Phasus nec pretim ornare velit non</p>
+                        <p>Kerjaan akan kami kerjakan secara profesional!</p>
                     </div>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                     </div>
                     <div class="feature-text">
                         <h3>24/7 Support</h3>
-                        <p>Lorem ipsum dolor sit amet elit. Phasus nec pretim ornare velit non</p>
+                        <p>Siap membantu permasalahan anda selama 24/7 Jam!</p>
                     </div>
                 </div>
             </div>
@@ -98,83 +98,25 @@
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-6">
                 <div class="about-img">
-                    <img src="{{ asset('user') }}/img/about.jpg" alt="Image">
+                    <img src="{{ asset('user') }}/img/{{ $ipg->img_welcome }}" alt="Image">
                 </div>
             </div>
             <div class="col-lg-7 col-md-6">
                 <div class="section-header text-left">
-                    <p>Welcome to Builderz</p>
-                    <h2>25 Years Experience</h2>
+                    <p>Welcome to {{ $basecms->app_name }}</p>
+                    <h2>{{ $ipg->title_welcome }}</h2>
                 </div>
                 <div class="about-text">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
+                        {{ $ipg->desc_welcome }}
                     </p>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. Aliquam interdum at lacus non blandit.
-                    </p>
-                    <a class="btn" href="">Learn More</a>
+                    <a class="btn" href="{{ route('about') }}">Learn More</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- About End -->
-
-
-<!-- Fact Start -->
-<div class="fact">
-    <div class="container-fluid">
-        <div class="row counters">
-            <div class="col-md-6 fact-left wow slideInLeft">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="fact-icon">
-                            <i class="flaticon-worker"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h2 data-toggle="counter-up">109</h2>
-                            <p>Expert Workers</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="fact-icon">
-                            <i class="flaticon-building"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h2 data-toggle="counter-up">485</h2>
-                            <p>Happy Clients</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 fact-right wow slideInRight">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="fact-icon">
-                            <i class="flaticon-address"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h2 data-toggle="counter-up">789</h2>
-                            <p>Completed Projects</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="fact-icon">
-                            <i class="flaticon-crane"></i>
-                        </div>
-                        <div class="fact-text">
-                            <h2 data-toggle="counter-up">890</h2>
-                            <p>Running Projects</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Fact End -->
-
 
 <!-- Service Start -->
 <div class="service">
@@ -289,7 +231,7 @@
 <!-- Video Start -->
 <div class="video wow fadeIn" data-wow-delay="0.1s">
     <div class="container">
-        <button type="button" class="btn-play" data-toggle="modal" data-src="https://www.youtube.com/embed/DWRcNpR6Kdc" data-target="#videoModal">
+        <button type="button" class="btn-play" data-toggle="modal" data-src="https://www.youtube.com/embed/{{ $ipg->yt_id }}" data-target="#videoModal">
             <span></span>
         </button>
     </div>

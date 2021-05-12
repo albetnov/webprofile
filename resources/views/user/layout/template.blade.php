@@ -83,11 +83,11 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
-                            <a href="#" class="nav-item nav-link active">Home</a>
-                            <a href="#" class="nav-item nav-link">About</a>
-                            <a href="#" class="nav-item nav-link">Service</a>
-                            <a href="#" class="nav-item nav-link">Team</a>
-                            <a href="#" class="nav-item nav-link">Contact</a>
+                            <a href="{{ route('home') }}" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Home</a>
+                            <a href="{{ route('about') }}" class="nav-item nav-link{{ request()->is('about') ? ' active' : '' }}">About</a>
+                            <a href="{{ route('service') }}" class="nav-item nav-link{{ request()->is('service') ? ' active' : '' }}"">Service</a>
+                            <a href="{{ route('team') }}" class="nav-item nav-link{{ request()->is('team') ? ' active' : '' }}"">Team</a>
+                            <a href="{{ route('contact') }}" class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}"">Contact</a>
                         </div>
                         <div class="ml-auto">
                             <a class="btn" href="#">Get A Quote</a>
@@ -117,11 +117,9 @@
             <div class="col-md-6 col-lg-4">
                 <div class="footer-link">
                     <h2>Useful Pages</h2>
-                    <a href="">About Us</a>
-                    <a href="">Contact Us</a>
-                    <a href="">Our Team</a>
-                    <a href="">Projects</a>
-                    <a href="">Testimonial</a>
+                    <a href="{{ route('about') }}">About Us</a>
+                    <a href="{{ route('contact') }}">Contact Us</a>
+                    <a href="{{ route('team') }}">Our Team</a>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4">

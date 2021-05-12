@@ -15,4 +15,9 @@ class UserModel extends Model
         return DB::table('basecms')->first();
     }
 
+    public function index()
+    {
+        return DB::table('ipage')->first();
+    }
+
 }
