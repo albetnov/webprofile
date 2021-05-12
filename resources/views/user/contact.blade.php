@@ -1,5 +1,5 @@
 @extends('user.layout.template')
-@section('title','contact')
+@section('title','Contact Us')
 @section('content')
 <!-- Page Header Start -->
 <div class="page-header">
@@ -9,8 +9,8 @@
                 <h2>Contact Us</h2>
             </div>
             <div class="col-12">
-                <a href="">Home</a>
-                <a href="">Contact Us</a>
+                <a href="{{ route('home') }}">Home</a>
+                <a href="#">Contact Us</a>
             </div>
         </div>
     </div>
@@ -32,21 +32,21 @@
                         <i class="flaticon-address"></i>
                         <div class="contact-text">
                             <h2>Location</h2>
-                            <p>123 Street, New York, USA</p>
+                            <p>{{ $basecms->location }}</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="flaticon-call"></i>
                         <div class="contact-text">
                             <h2>Phone</h2>
-                            <p>+012 345 67890</p>
+                            <p>+{{ $basecms->call_us }}</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="flaticon-send-mail"></i>
                         <div class="contact-text">
                             <h2>Email</h2>
-                            <p>info@example.com</p>
+                            <p>{{ $basecms->email }}</p>
                         </div>
                     </div>
                 </div>

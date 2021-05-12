@@ -15,6 +15,7 @@ class Ipage extends Migration
     {
         Schema::create('ipage', function (Blueprint $table){
             $table->id();
+            $table->string('title');
             $table->string('img_c1');
             $table->string('img_c2');
             $table->string('img_c3');

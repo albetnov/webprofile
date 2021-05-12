@@ -16,6 +16,7 @@ class ipage extends Seeder
     {
         DB::table('ipage')->insert([
             'id' => '1',
+            'title' => 'Welcome to Kuli',
             'img_c1' => 'carousel1.jpg',
             'img_c2' => 'carousel2.jpg',
             'img_c3' => 'carousel3.jpg',

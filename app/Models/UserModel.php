@@ -20,4 +20,19 @@ class UserModel extends Model
         return DB::table('ipage')->first();
     }
 
+    public function about()
+    {
+        return DB::table('apage')->first();
+    }
+
+    public function service()
+    {
+        return DB::table('spage')->get();
+    }
+
+    public function iservice()
+    {
+        return DB::table('spage')->limit(3)->get();
+    }
+
 }

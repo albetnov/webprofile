@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserModel;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -16,7 +17,9 @@ class UserController extends Controller
     {
         $data = [
             'basecms' => $this->UserModel->basecms(),
-            'ipg' => $this->UserModel->index()
+            'ipg' => $this->UserModel->index(),
+            'service' => $this->UserModel->Iservice(),
+            'team' => User::limit(4)->get()
         ];
         return view('user.index', $data);
     }
@@ -24,7 +27,8 @@ class UserController extends Controller
     public function about()
     {
         $data = [
-            'basecms' => $this->UserModel->basecms()
+            'basecms' => $this->UserModel->basecms(),
+            'apg' => $this->UserModel->about()
         ];
         return view('user.about', $data);
     }
@@ -32,7 +36,8 @@ class UserController extends Controller
     public function service()
     {
         $data = [
-            'basecms' => $this->UserModel->basecms()
+            'basecms' => $this->UserModel->basecms(),
+            'spage' => $this->UserModel->service()
         ];
         return view('user.service', $data);
     }
@@ -40,7 +45,8 @@ class UserController extends Controller
     public function team()
     {
         $data = [
-            'basecms' => $this->UserModel->basecms()
+            'basecms' => $this->UserModel->basecms(),
+            'users' => User::get()
         ];
         return view('user.team', $data);
     }

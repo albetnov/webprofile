@@ -1,5 +1,5 @@
 @extends('user.layout.template')
-@section('title','service')
+@section('title','Our Service')
 @section('content')
 <!-- Page Header Start -->
 <div class="page-header">
@@ -9,8 +9,8 @@
                 <h2>Our Services</h2>
             </div>
             <div class="col-12">
-                <a href="">Home</a>
-                <a href="">Our Services</a>
+                <a href="{{ route('home') }}">Home</a>
+                <a href="#">Our Services</a>
             </div>
         </div>
     </div>
@@ -22,105 +22,27 @@
     <div class="container">
         <div class="section-header text-center">
             <p>Our Services</p>
-            <h2>We Provide Services</h2>
+            <h2>Servis Yang Kami Sediakan</h2>
         </div>
         <div class="row">
+            @foreach($spage as $spg)
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item">
                     <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-1.jpg" alt="Image">
+                        <img src="{{ asset('user') }}/img/{{ $spg->service_img }}" alt="Image">
                         <div class="service-overlay">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
+                                {{ $spg->service_desc }}
                             </p>
                         </div>
                     </div>
                     <div class="service-text">
-                        <h3>Building Construction</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-1.jpg" data-lightbox="service">+</a>
+                        <h3>{{ $spg->service_title }}</h3>
+                        <a class="btn" href="{{ asset('user') }}/img/{{ $spg->service_img }}" data-lightbox="service">+</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-2.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>House Renovation</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-2.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-3.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>Architecture Design</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-3.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-4.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>Interior Design</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-4.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-5.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>Fixing & Support</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-5.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-6.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>Painting</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-6.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>

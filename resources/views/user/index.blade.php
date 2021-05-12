@@ -1,5 +1,5 @@
 @extends('user.layout.template')
-@section('title', 'test')
+@section('title', $ipg->title)
 @section('content')
 <!-- Carousel Start -->
 <div id="carousel" class="carousel slide" data-ride="carousel">
@@ -14,7 +14,7 @@
             <div class="carousel-caption">
                 <p class="animated fadeInRight">{{ $ipg->title_c1 }}</p>
                 <h1 class="animated fadeInLeft">{{ $ipg->desc_c1 }}</h1>
-                <a class="btn animated fadeInUp" href="#">Get A Quote</a>
+                <a class="btn animated fadeInUp" href="#terjun">Go!!!</a>
             </div>
         </div>
 
@@ -23,7 +23,7 @@
             <div class="carousel-caption">
                 <p class="animated fadeInRight">{{ $ipg->title_c2 }}</p>
                 <h1 class="animated fadeInLeft">{{ $ipg->desc_c2 }}</h1>
-                <a class="btn animated fadeInUp" href="#">Get A Quote</a>
+                <a class="btn animated fadeInUp" href="#terjun">Go!!!</a>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
             <div class="carousel-caption">
                 <p class="animated fadeInRight">{{ $ipg->title_c3 }}</p>
                 <h1 class="animated fadeInLeft">{{ $ipg->desc_c3 }}</h1>
-                <a class="btn animated fadeInUp" href="#">Get A Quote</a>
+                <a class="btn animated fadeInUp" href="#terjun">Go!!!</a>
             </div>
         </div>
     </div>
@@ -93,7 +93,7 @@
 
 
 <!-- About Start -->
-<div class="about wow fadeInUp" data-wow-delay="0.1s">
+<div class="about wow fadeInUp" id="terjun" data-wow-delay="0.1s">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-5 col-md-6">
@@ -126,107 +126,29 @@
             <h2>We Provide Services</h2>
         </div>
         <div class="row">
+            @foreach($service as $spg)
             <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="service-item">
                     <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-1.jpg" alt="Image">
+                        <img src="{{ asset('user') }}/img/{{ $spg->service_img }}" alt="Image">
                         <div class="service-overlay">
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
+                                {{ $spg->service_desc }}
                             </p>
                         </div>
                     </div>
                     <div class="service-text">
-                        <h3>Building Construction</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-1.jpg" data-lightbox="service">+</a>
+                        <h3>{{ $spg->service_title }}</h3>
+                        <a class="btn" href="{{ asset('user') }}/img/{{ $spg->service_img }}" data-lightbox="service">+</a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-2.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>House Renovation</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-2.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-3.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>Architecture Design</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-3.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-4.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>Interior Design</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-4.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-5.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>Fixing & Support</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-5.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
-                <div class="service-item">
-                    <div class="service-img">
-                        <img src="{{ asset('user') }}/img/service-6.jpg" alt="Image">
-                        <div class="service-overlay">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, viverra quis sem.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="service-text">
-                        <h3>Painting</h3>
-                        <a class="btn" href="{{ asset('user') }}/img/service-6.jpg" data-lightbox="service">+</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
+        <a href="{{ route('service') }}">See More...</a>
     </div>
 </div>
 <!-- Service End -->
-
 
 <!-- Video Start -->
 <div class="video wow fadeIn" data-wow-delay="0.1s">
@@ -260,222 +182,29 @@
     <div class="container">
         <div class="section-header text-center">
             <p>Our Team</p>
-            <h2>Meet Our Engineer</h2>
+            <h2>Meet Our Team</h2>
         </div>
         <div class="row">
+            @foreach ($team as $usr)
             <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="team-item">
                     <div class="team-img">
-                        <img src="{{ asset('user') }}/img/team-1.jpg" alt="Team Image">
+                        <img height="250" src="{{ asset('user') }}/usr_propic/{{ $usr->pro_pic }}" alt="Team Image">
                     </div>
                     <div class="team-text">
-                        <h2>Adam Phillips</h2>
-                        <p>CEO & Founder</p>
+                        <h2>{{ $usr->name }}</h2>
+                        <p>{{ $usr->work_rank }}</p>
                     </div>
                     <div class="team-social">
-                        <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
+                        <a class="social-fb" href="{{ $usr->fb_link }}"><i class="fab fa-facebook-f"></i></a>
+                        <a class="social-in" href="{{ $usr->ig_link }}"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{ asset('user') }}/img/team-2.jpg" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>Dylan Adams</h2>
-                        <p>Civil Engineer</p>
-                    </div>
-                    <div class="team-social">
-                        <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{ asset('user') }}/img/team-3.jpg" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>Jhon Doe</h2>
-                        <p>Interior Designer</p>
-                    </div>
-                    <div class="team-social">
-                        <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
-                <div class="team-item">
-                    <div class="team-img">
-                        <img src="{{ asset('user') }}/img/team-4.jpg" alt="Team Image">
-                    </div>
-                    <div class="team-text">
-                        <h2>Josh Dunn</h2>
-                        <p>Painter</p>
-                    </div>
-                    <div class="team-social">
-                        <a class="social-tw" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="social-fb" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="social-li" href=""><i class="fab fa-linkedin-in"></i></a>
-                        <a class="social-in" href=""><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
 <!-- Team End -->
-
-
-<!-- FAQs Start -->
-<div class="faqs">
-    <div class="container">
-        <div class="section-header text-center">
-            <p>Frequently Asked Question</p>
-            <h2>You May Ask</h2>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div id="accordion-1">
-                    <div class="card wow fadeInLeft" data-wow-delay="0.1s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseOne">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseOne" class="collapse" data-parent="#accordion-1">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card wow fadeInLeft" data-wow-delay="0.2s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseTwo">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseTwo" class="collapse" data-parent="#accordion-1">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card wow fadeInLeft" data-wow-delay="0.3s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseThree">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseThree" class="collapse" data-parent="#accordion-1">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card wow fadeInLeft" data-wow-delay="0.4s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseFour">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseFour" class="collapse" data-parent="#accordion-1">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card wow fadeInLeft" data-wow-delay="0.5s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseFive">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseFive" class="collapse" data-parent="#accordion-1">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div id="accordion-2">
-                    <div class="card wow fadeInRight" data-wow-delay="0.1s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseSix">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseSix" class="collapse" data-parent="#accordion-2">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card wow fadeInRight" data-wow-delay="0.2s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseSeven">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseSeven" class="collapse" data-parent="#accordion-2">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card wow fadeInRight" data-wow-delay="0.3s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseEight">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseEight" class="collapse" data-parent="#accordion-2">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card wow fadeInRight" data-wow-delay="0.4s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseNine">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseNine" class="collapse" data-parent="#accordion-2">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card wow fadeInRight" data-wow-delay="0.5s">
-                        <div class="card-header">
-                            <a class="card-link collapsed" data-toggle="collapse" href="#collapseTen">
-                                Lorem ipsum dolor sit amet?
-                            </a>
-                        </div>
-                        <div id="collapseTen" class="collapse" data-parent="#accordion-2">
-                            <div class="card-body">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- FAQs End -->
 
 @endsection
