@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('title','team')
-    @section('content')
+@section('content')
 <!-- Page Header Start -->
 <div class="page-header">
     <div class="container">

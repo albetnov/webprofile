@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title> @yield('title')</title>
+    <title>@yield('title')</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Construction Company Website Template" name="keywords">
     <meta content="Construction Company Website Template" name="description">
 
     <!-- Favicon -->
-    <link href="{{ asset('user') }}/img/favicon.ico" rel="icon">
+    <link rel="shortcut icon" href="{{ asset('user') }}/img/{{ $basecms->favicon }}">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -37,8 +37,7 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="logo">
                             <a href="index.html">
-                                <h1>Builderz</h1>
-                                <!-- <img src="img/logo.jpg" alt="Logo"> -->
+                                <h1>{{ $basecms->app_name }}</h1>
                             </a>
                         </div>
                     </div>
@@ -47,22 +46,11 @@
                             <div class="col-4">
                                 <div class="top-bar-item">
                                     <div class="top-bar-icon">
-                                        <i class="flaticon-calendar"></i>
-                                    </div>
-                                    <div class="top-bar-text">
-                                        <h3>Opening Hour</h3>
-                                        <p>Mon - Fri, 8:00 - 9:00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="top-bar-item">
-                                    <div class="top-bar-icon">
                                         <i class="flaticon-call"></i>
                                     </div>
                                     <div class="top-bar-text">
                                         <h3>Call Us</h3>
-                                        <p>+012 345 6789</p>
+                                        <p>+{{ $basecms->call_us }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +61,7 @@
                                     </div>
                                     <div class="top-bar-text">
                                         <h3>Email Us</h3>
-                                        <p>info@example.com</p>
+                                        <p>{{ $basecms->email }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -114,32 +102,19 @@
 <div class="footer wow fadeIn" data-wow-delay="0.3s">
     <div class="container">
         <div class="row">
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-4">
                 <div class="footer-contact">
                     <h2>Office Contact</h2>
-                    <p><i class="fa fa-map-marker-alt"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt"></i>+012 345 67890</p>
-                    <p><i class="fa fa-envelope"></i>info@example.com</p>
+                    <p><i class="fa fa-map-marker-alt"></i>{{ $basecms->location }}</p>
+                    <p><i class="fa fa-phone-alt"></i>{{ $basecms->call_us }}</p>
+                    <p><i class="fa fa-envelope"></i>{{ $basecms->email }}</p>
                     <div class="footer-social">
-                        <a href=""><i class="fab fa-twitter"></i></a>
-                        <a href=""><i class="fab fa-facebook-f"></i></a>
-                        <a href=""><i class="fab fa-youtube"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                        <a href=""><i class="fab fa-linkedin-in"></i></a>
+                        <a href="{{ $basecms->fb_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{ $basecms->ig_link }}" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="footer-link">
-                    <h2>Services Areas</h2>
-                    <a href="">Building Construction</a>
-                    <a href="">House Renovation</a>
-                    <a href="">Architecture Design</a>
-                    <a href="">Interior Design</a>
-                    <a href="">Painting</a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
+            <div class="col-md-6 col-lg-4">
                 <div class="footer-link">
                     <h2>Useful Pages</h2>
                     <a href="">About Us</a>
@@ -149,36 +124,16 @@
                     <a href="">Testimonial</a>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="newsletter">
-                    <h2>Newsletter</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet elit. Phasellus nec pretium mi. Curabitur facilisis ornare velit non vulpu
-                    </p>
-                    <div class="form">
-                        <input class="form-control" placeholder="Email here">
-                        <button class="btn">Submit</button>
-                    </div>
-                </div>
+            <div class="col-md-6 col-lg-4">
+                <h2>Quotes</h2>
+                <p>"{{ $basecms->quote }}" - {{ $basecms->quote_author }}</p>
             </div>
-        </div>
-    </div>
-    <div class="container footer-menu">
-        <div class="f-menu">
-            <a href="">Terms of use</a>
-            <a href="">Privacy policy</a>
-            <a href="">Cookies</a>
-            <a href="">Help</a>
-            <a href="">FQAs</a>
         </div>
     </div>
     <div class="container copyright">
         <div class="row">
-            <div class="col-md-6">
-                <p>&copy; <a href="#">Your Site Name</a>, All Right Reserved.</p>
-            </div>
-            <div class="col-md-6">
-                <p>Designed By <a href="https://htmlcodex.com">HTML Codex</a></p>
+            <div class="col-md-4">
+                <p>&copy; <a href="#">{{ $basecms->app_name }}</a>, All Right Reserved.</p>
             </div>
         </div>
     </div>

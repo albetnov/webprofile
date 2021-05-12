@@ -1,6 +1,6 @@
 @extends('user.layout.template')
 @section('title','contact')
-    @section('content')
+@section('content')
 <!-- Page Header Start -->
 <div class="page-header">
     <div class="container">
@@ -81,4 +81,4 @@
     </div>
 </div>
 <!-- Contact End -->
-@ends
+@endsection

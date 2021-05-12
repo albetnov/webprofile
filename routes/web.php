@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'user.index');
+Route::get('/', [UserController::class, 'index'])->name('home');
 Route::view('/about', 'user.about');
 Route::view('/service', 'user.service');
 Route::view('/team', 'user.team');

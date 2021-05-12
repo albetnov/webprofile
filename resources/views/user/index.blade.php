@@ -1,6 +1,6 @@
 @extends('user.layout.template')
-@section('title','home')
-    @section('content')
+@section('title', 'test')
+@section('content')
 <!-- Carousel Start -->
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
@@ -536,4 +536,4 @@
 </div>
 <!-- FAQs End -->
 
-    @endsection
+@endsection
