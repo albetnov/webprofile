@@ -28,7 +28,6 @@ class Ipage extends Migration
             $table->string('img_welcome');
             $table->string('title_welcome');
             $table->longText('desc_welcome');
-            $table->string('video_background');
             $table->string('yt_id');
         });
     }

@@ -35,7 +35,6 @@ class ipage extends Seeder
             facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, 
             viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. 
             Aliquam interdum at lacus non blandit.',
-            'video_background' => 'vid_bg.jpg',
             'yt_id' => 'qiV2quOhjxA'
         ]);
     }
