@@ -19,6 +19,7 @@ Route::get('/about', [UserController::class, 'about'])->name('about');
 Route::get('/service', [UserController::class, 'service'])->name('service');
 Route::get('/team', [UserController::class, 'team'])->name('team');
 Route::get('/contact', [UserController::class, 'contact'])->name('contact');
+Route::post('/send_contact', [UserController::class, 'send_contact'])->name('scontact');
 Route::view('/login', 'auth.login');
 Route::view('/register', 'auth.register');
 Route::view('/testpage', 'admin.test');

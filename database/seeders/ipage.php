@@ -28,13 +28,11 @@ class ipage extends Seeder
             'desc_c3' => 'Di bayar dong :V.',
             'img_welcome' => 'welcome_default.jpg',
             'title_welcome' => '30 Tahun pengalaman',
-            'desc_welcome' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. 
-            Curabitur facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, 
-            viverra quis sem.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec pretium mi. Curabitur 
-            facilisis ornare velit non vulputate. Aliquam metus tortor, auctor id gravida condimentum, 
-            viverra quis sem. Curabitur non nisl nec nisi scelerisque maximus. Aenean consectetur convallis porttitor. 
-            Aliquam interdum at lacus non blandit.',
+            'desc_welcome' => 'Dengan 30 Tahun Pengalaman dari kami apa yang ingin anda bangun
+            pastilah jadi. Ya karena kami memiliki pengalaman lebih dari 20 Tahun yaitu
+            30 Tahun. Ayolah ini teks cuma untuk contoh doang. Jadi saya harus buat cukup panjang,
+            semoga ini udah cukup panjang. Ayok panjang yok bisa yok. Yok panjang... Susah juga
+            buat teks basa basi yang panjang. Okelah, ini udah cukup panjang...',
             'yt_id' => 'qiV2quOhjxA'
         ]);
     }

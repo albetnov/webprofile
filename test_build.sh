@@ -11,7 +11,7 @@ read -p "Press any key to continue..."
 clear
 echo "Running script..."
 php artisan key:generate
-php artisan migrate
+php artisan migrate:fresh
 php artisan db:seed --class=apage
 php artisan db:seed --class=BaseCMS
 php artisan db:seed --class=ipage

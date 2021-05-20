@@ -23,6 +23,7 @@
     <link href="{{ asset('user') }}/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
     <link href="{{ asset('user') }}/lib/slick/slick.css" rel="stylesheet">
     <link href="{{ asset('user') }}/lib/slick/slick-theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/toastr/toastr.min.css') }}">
 
     <!-- Template Stylesheet -->
     <link href="{{ asset('user') }}/css/style.css" rel="stylesheet">
@@ -152,7 +153,29 @@
 <script src="{{ asset('user') }}/lib/waypoints/waypoints.min.js"></script>
 <script src="{{ asset('user') }}/lib/counterup/counterup.min.js"></script>
 <script src="{{ asset('user') }}/lib/slick/slick.min.js"></script>
-
+<script src="{{ asset('assets/vendors/toastr/toastr.min.js') }}"></script>
+<script type="text/javascript">
+ @if(session('pesan'))
+toastr.options = {
+  "closeButton": true,
+  "debug": true,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
+toastr["{{ session('alert') }}"]("{{ session('pesan') }}")
+@endif
+</script>
 <!-- Template Javascript -->
 <script src="{{ asset('user') }}/js/main.js"></script>
 </body>

@@ -54,22 +54,23 @@
             <div class="col-md-6">
                 <div class="contact-form">
                     <div id="success"></div>
-                    <form name="sentMessage" id="contactForm" novalidate="novalidate">
+                    <form method="POST" action="{{ route('scontact') }}" id="contactForm">
+                        @csrf
                         <div class="control-group">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name" required="required" data-validation-required-message="Please enter your name" />
-                            <p class="help-block text-danger"></p>
+                            <input type="text" value="{{ old('name_contact') }}" class="form-control @error('name_contact') is-invalid @enderror" name="name_contact" id="name" placeholder="Your Name"/>
+                            <p class="help-block text-danger">@error('name_contact') {{ $message }} @enderror</p>
                         </div>
                         <div class="control-group">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email" required="required" data-validation-required-message="Please enter your email" />
-                            <p class="help-block text-danger"></p>
+                            <input type="email" value="{{ old('email_contact') }}" class="form-control @error('email_contact') is-invalid @enderror" id="email" name="email_contact" placeholder="Your Email"/>
+                            <p class="help-block text-danger">@error('email_contact') {{ $message }} @enderror</p>
                         </div>
                         <div class="control-group">
-                            <input type="text" class="form-control" id="subject" placeholder="Subject" required="required" data-validation-required-message="Please enter a subject" />
-                            <p class="help-block text-danger"></p>
+                            <input type="text" value="{{ old('subject_contact') }}" class="form-control @error('subject_contact') is-invalid @enderror" id="subject" name="subject_contact" placeholder="Subject"/>
+                            <p class="help-block text-danger">@error('subject_contact') {{ $message }} @enderror</p>
                         </div>
                         <div class="control-group">
-                            <textarea class="form-control" id="message" placeholder="Message" required="required" data-validation-required-message="Please enter your message"></textarea>
-                            <p class="help-block text-danger"></p>
+                            <textarea class="form-control @error('message_contact') is-invalid @enderror" id="message" placeholder="Message" name="message_contact">{{ old('message_contact') }}</textarea>
+                            <p class="help-block text-danger">@error('message_contact') {{ $message }} @enderror</p>
                         </div>
                         <div>
                             <button class="btn" type="submit" id="sendMessageButton">Send Message</button>
