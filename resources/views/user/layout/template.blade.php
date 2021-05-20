@@ -12,7 +12,8 @@
     <link rel="shortcut icon" href="{{ asset('user') }}/img/{{ $basecms->favicon }}">
 
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- CSS Libraries -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
@@ -84,99 +85,108 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto">
-                            <a href="{{ route('home') }}" class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Home</a>
-                            <a href="{{ route('about') }}" class="nav-item nav-link{{ request()->is('about') ? ' active' : '' }}">About</a>
-                            <a href="{{ route('service') }}" class="nav-item nav-link{{ request()->is('service') ? ' active' : '' }}"">Service</a>
-                            <a href="{{ route('team') }}" class="nav-item nav-link{{ request()->is('team') ? ' active' : '' }}"">Team</a>
-                            <a href="{{ route('contact') }}" class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}"">Contact</a>
+                            <a href="{{ route('home') }}"
+                                class="nav-item nav-link{{ request()->is('/') ? ' active' : '' }}">Home</a>
+                            <a href="{{ route('about') }}"
+                                class="nav-item nav-link{{ request()->is('about') ? ' active' : '' }}">About</a>
+                            <a href="{{ route('service') }}"
+                                class="nav-item nav-link{{ request()->is('service') ? ' active' : '' }}"">Service</a>
+                            <a href=" {{ route('team') }}"
+                                class="nav-item nav-link{{ request()->is('team') ? ' active' : '' }}"">Team</a>
+                            <a href=" {{ route('contact') }}"
+                                class="nav-item nav-link{{ request()->is('contact') ? ' active' : '' }}"">Contact</a>
                         </div>
-                        <div class="ml-auto">
-                            <a class="btn" href="#">LOGIN</a>
+                        <div class=" ml-auto">
+                                <a class="btn" href="{{ route('login') }}">LOGIN</a>
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
         <!-- Nav Bar End -->
-@yield('content')
-<!-- Footer Start -->
-<div class="footer wow fadeIn" data-wow-delay="0.3s">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-lg-4">
-                <div class="footer-contact">
-                    <h2>Office Contact</h2>
-                    <p><i class="fa fa-map-marker-alt"></i>{{ $basecms->location }}</p>
-                    <p><i class="fa fa-phone-alt"></i>{{ $basecms->call_us }}</p>
-                    <p><i class="fa fa-envelope"></i>{{ $basecms->email }}</p>
-                    <div class="footer-social">
-                        <a href="{{ $basecms->fb_link }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="{{ $basecms->ig_link }}" target="_blank"><i class="fab fa-instagram"></i></a>
+        @yield('content')
+        <!-- Footer Start -->
+        <div class="footer wow fadeIn" data-wow-delay="0.3s">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="footer-contact">
+                            <h2>Office Contact</h2>
+                            <p><i class="fa fa-map-marker-alt"></i>{{ $basecms->location }}</p>
+                            <p><i class="fa fa-phone-alt"></i>{{ $basecms->call_us }}</p>
+                            <p><i class="fa fa-envelope"></i>{{ $basecms->email }}</p>
+                            <div class="footer-social">
+                                <a href="{{ $basecms->fb_link }}" target="_blank"><i
+                                        class="fab fa-facebook-f"></i></a>
+                                <a href="{{ $basecms->ig_link }}" target="_blank"><i
+                                        class="fab fa-instagram"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="footer-link">
+                            <h2>Useful Pages</h2>
+                            <a href="{{ route('about') }}">About Us</a>
+                            <a href="{{ route('contact') }}">Contact Us</a>
+                            <a href="{{ route('team') }}">Our Team</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <h2>Quotes</h2>
+                        <p>"{{ $basecms->quote }}" - {{ $basecms->quote_author }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <div class="footer-link">
-                    <h2>Useful Pages</h2>
-                    <a href="{{ route('about') }}">About Us</a>
-                    <a href="{{ route('contact') }}">Contact Us</a>
-                    <a href="{{ route('team') }}">Our Team</a>
+            <div class="container copyright">
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>&copy; <a href="#">{{ $basecms->app_name }}</a>, All Right Reserved.</p>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-6 col-lg-4">
-                <h2>Quotes</h2>
-                <p>"{{ $basecms->quote }}" - {{ $basecms->quote_author }}</p>
-            </div>
         </div>
-    </div>
-    <div class="container copyright">
-        <div class="row">
-            <div class="col-md-4">
-                <p>&copy; <a href="#">{{ $basecms->app_name }}</a>, All Right Reserved.</p>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Footer End -->
+        <!-- Footer End -->
 
-<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-</div>
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+    </div>
 
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('user') }}/lib/easing/easing.min.js"></script>
-<script src="{{ asset('user') }}/lib/wow/wow.min.js"></script>
-<script src="{{ asset('user') }}/lib/owlcarousel/owl.carousel.min.js"></script>
-<script src="{{ asset('user') }}/lib/isotope/isotope.pkgd.min.js"></script>
-<script src="{{ asset('user') }}/lib/lightbox/js/lightbox.min.js"></script>
-<script src="{{ asset('user') }}/lib/waypoints/waypoints.min.js"></script>
-<script src="{{ asset('user') }}/lib/counterup/counterup.min.js"></script>
-<script src="{{ asset('user') }}/lib/slick/slick.min.js"></script>
-<script src="{{ asset('assets/vendors/toastr/toastr.min.js') }}"></script>
-<script type="text/javascript">
- @if(session('pesan'))
-toastr.options = {
-  "closeButton": true,
-  "debug": true,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-top-right",
-  "preventDuplicates": false,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "1000",
-  "timeOut": "5000",
-  "extendedTimeOut": "1000",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "fadeOut"
-}
-toastr["{{ session('alert') }}"]("{{ session('pesan') }}")
-@endif
-</script>
-<!-- Template Javascript -->
-<script src="{{ asset('user') }}/js/main.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('user') }}/lib/easing/easing.min.js"></script>
+    <script src="{{ asset('user') }}/lib/wow/wow.min.js"></script>
+    <script src="{{ asset('user') }}/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="{{ asset('user') }}/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="{{ asset('user') }}/lib/lightbox/js/lightbox.min.js"></script>
+    <script src="{{ asset('user') }}/lib/waypoints/waypoints.min.js"></script>
+    <script src="{{ asset('user') }}/lib/counterup/counterup.min.js"></script>
+    <script src="{{ asset('user') }}/lib/slick/slick.min.js"></script>
+    <script src="{{ asset('assets/vendors/toastr/toastr.min.js') }}"></script>
+    <script type="text/javascript">
+        @if (session('pesan'))
+            toastr.options = {
+            "closeButton": true,
+            "debug": true,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+            }
+            toastr["{{ session('alert') }}"]("{{ session('pesan') }}")
+        @endif
+
+    </script>
+    <!-- Template Javascript -->
+    <script src="{{ asset('user') }}/js/main.js"></script>
 </body>
+
 </html>

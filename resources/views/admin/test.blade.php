@@ -1,5 +1,5 @@
 @extends('admin.layout.template')
-@section('title', 'test page')
+@section('title', 'Uji Coba')
 @section('content')
 
 <div id="main">
@@ -13,28 +13,21 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Layout Default</h3>
+                    <h3>Test Page</h3>
                     <p class="text-subtitle text-muted">
-                        The default layout
+                       Ini contoh testing
                     </p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav
                         aria-label="breadcrumb"
-                        class="
-                            breadcrumb-header
-                            float-start float-lg-end
-                        "
-                    >
+                        class="breadcrumb-headerfloat-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a href="index.html">Dashboard</a>
+                                <a href="#">Dashboard</a>
                             </li>
-                            <li
-                                class="breadcrumb-item active"
-                                aria-current="page"
-                            >
-                                Layout Default
+                            <li class="breadcrumb-item active" aria-current="page">
+                                Test Page
                             </li>
                         </ol>
                     </nav>
@@ -44,16 +37,12 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Default Layout</h4>
+                    <h4 class="card-title">Hai, {{ session('nama') }}</h4>
                 </div>
                 <div class="card-body">
-                    Lorem ipsum dolor sit amet consectetur
-                    adipisicing elit. Magnam, commodi? Ullam quaerat
-                    similique iusto temporibus, vero aliquam
-                    praesentium, odit deserunt eaque nihil saepe hic
-                    deleniti? Placeat delectus quibusdam ratione
-                    ullam!
+                    Kamu berhasil login sebagai {{ session('level') }}
                 </div>
+                <button class="btn btn-primary btn-sm" onclick="location.href='{{ route('logout') }}'">Logout</button>
             </div>
         </section>
     </div>
