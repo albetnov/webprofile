@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('pro_pic')->nullable(true);
             $table->string('work_rank');
             $table->string('level');
-            $table->string('username');
+            $table->string('username')->unique();
             $table->string('ig_link')->nullable(true);
             $table->string('fb_link')->nullable(true);
             $table->string('email')->unique();

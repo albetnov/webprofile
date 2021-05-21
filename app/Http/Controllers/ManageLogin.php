@@ -20,7 +20,7 @@ class ManageLogin extends Controller
                 $req->session()->put('nama', $user->name);
                 $req->session()->put('id', $user->id);
                 $req->session()->put('level', $user->level);
-                return redirect('admin/dashboard');
+                return redirect()->route('admdashboard');
             } elseif ($user->level === 'staff') {
                 $req->session()->put('nama', $user->name);
                 $req->session()->put('id', $user->id);

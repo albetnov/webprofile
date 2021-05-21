@@ -13,13 +13,13 @@ class Contact extends Migration
      */
     public function up()
     {
-        Schema::create('contact', function(Blueprint $table){
+        Schema::create('contact', function (Blueprint $table) {
             $table->id();
             $table->string('name_contact');
             $table->string('email_contact');
             $table->string('subject_contact');
             $table->longText('message_contact');
-            $table->timestamps();
+            $table->timestamp('posted_at', 0);
         });
     }
 

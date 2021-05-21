@@ -3,6 +3,7 @@
 use App\Http\Controllers\ManageLogin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,21 @@ Route::view('/login', 'auth.login')->name('login');
 Route::post('/otwmasuk', [ManageLogin::class, 'proses_login'])->name('login_akun');
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['middleware' => ['cek_level:admin']], function () {
-        Route::view('/admin/dashboard', 'admin.test');
+        Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admdashboard');
+        Route::post('/admin/modcuracc', [AdminController::class, 'modcuracc'])->name('modcuracc');
+        Route::post('/admin/modcurpass', [AdminController::class, 'modcurpass'])->name('modcurpass');
+        Route::post('/admin/modcurmail', [AdminController::class, 'modcurmail'])->name('modcurmail');
+        Route::get('/admin/useracc', [AdminController::class, 'useracc'])->name('useracc');
+        Route::view('/admin/user/add', 'admin.user.useradd')->name('adduser');
+        Route::post('/admin/user/action_add', [AdminController::class, 'adduser'])->name('actaddusr');
+        Route::get('/admin/user/detail/{id}', [AdminController::class, 'detuser']);
+        Route::get('/admin/user/edit/{id}', [AdminController::class, 'moduser']);
+        Route::post('/admin/user/act_edit/{id}', [AdminController::class, 'actmoduser']);
+        Route::get('/admin/user/del/{id}', [AdminController::class, 'deluser']);
+        Route::post('/admin/user/modpass/{id}', [AdminController::class, 'modpass']);
+        Route::get('/admin/user/viscontact', [AdminController::class, 'getcontact'])->name('viscontact');
+        Route::get('/admin/user/viscontact/detail/{id}', [AdminController::class, 'detcontact']);
+        Route::get('/admin/user/viscontact/del/{id}', [AdminController::class, 'delcontact']);
     });
     Route::group(['middleware' => ['cek_level:staff']], function () {
         Route::view('/staff/dashboard', 'admin.test');
