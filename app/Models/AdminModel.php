@@ -9,4 +9,14 @@ use Illuminate\Support\Facades\DB;
 class AdminModel extends Model
 {
     use HasFactory;
+
+    public function updBaseCMS($data)
+    {
+        DB::table('basecms')->update($data);
+    }
+
+    public function updiPage($data)
+    {
+        DB::table('ipage')->update($data);
+    }
 }

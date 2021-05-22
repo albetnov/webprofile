@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\AdminModel;
 use App\Models\UserContact;
 use Illuminate\Support\Facades\Hash;
+use App\Models\UserModel;
 
 class AdminController extends Controller
 {
@@ -14,8 +15,9 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->AdminModel = new AdminModel();
+        $this->UserModel = new UserModel();
     }
-
+    //Start of Dashboard
     public function index()
     {
         $data = [
@@ -141,7 +143,8 @@ class AdminController extends Controller
         );
         return redirect()->route('admdashboard')->with($notif);
     }
-
+    //End of Dashboard
+    //Start of Manage User
     public function useracc()
     {
         $data = [
@@ -392,4 +395,162 @@ class AdminController extends Controller
         ];
         return redirect()->back()->with($notif);
     }
+    //End of Manage User
+    //Start of Manage Page
+    public function basecms()
+    {
+        $data = [
+            'bscms' => $this->UserModel->basecms()
+        ];
+        return view('', $data);
+    }
+
+    public function base_edit(Request $req)
+    {
+        $bscms = $this->UserModel->basecms();
+        $req->validate(
+            [
+                'favicon' => 'nullable|max:2048|mimes:ico',
+                'app_name' => 'min:3|max:32|required',
+                'call_us' => 'required|digits:12',
+                'email' => 'required|email|max:48',
+                'location' => 'required|max:64',
+                'fb_link' => 'required|max:48',
+                'ig_link' => 'required|max:48',
+                'quote' => 'required|max:64',
+                'quote_author' => 'required|max:32'
+            ]
+        );
+        if (empty($req->favicon)) {
+            $data = [
+                'app_name' => $req->app_name,
+                'call_us' => $req->call_us,
+                'email' => $req->email,
+                'location' => $req->location,
+                'fb_link' => $req->fb_link,
+                'ig_link' => $req->ig_link,
+                'quote' => $req->quote,
+                'quote_author' => $req->quote_author
+            ];
+        } else {
+            $photo_path = public_path('user/img/' . $bscms->favicon);
+            if (!empty($bscms->favicon)) {
+                unlink($photo_path);
+            }
+            $img = $req->favicon;
+            $imgName = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('user/img'), $imgName);
+            $data = [
+                'favicon' => $imgName,
+                'app_name' => $req->app_name,
+                'call_us' => $req->call_us,
+                'email' => $req->email,
+                'location' => $req->location,
+                'fb_link' => $req->fb_link,
+                'ig_link' => $req->ig_link,
+                'quote' => $req->quote,
+                'quote_author' => $req->quote_author
+            ];
+        }
+        $this->AdminModel->updBaseCMS($data);
+        $notif = [
+            'pesan' => 'Base Config updated!',
+            'alert' => 'success'
+        ];
+        return redirect()->back()->with($notif);
+    }
+
+    public function ipage()
+    {
+        $data = [
+            'ipage' => $this->UserModel->index()
+        ];
+        return view('', $data);
+    }
+
+    public function act_ipage(Request $req)
+    {
+        $req->validate(
+            [
+                'title' => 'required|min:3|max:20',
+                'img_c1' => 'mimes:jpeg,jpg,png|max:4096',
+                'img_c2' => 'mimes:jpeg,jpg,png|max:4096',
+                'img_c3' => 'mimes:jpeg,jpg,png|max:4096',
+                'title_c1' => 'required|min:3|max:32',
+                'title_c2' => 'required|min:3|max:32',
+                'title_c3' => 'required|min:3|max:32',
+                'desc_c1' => 'required|min:3|max:24',
+                'desc_c2' => 'required|min:3|max:24',
+                'desc_c3' => 'required|min:3|max:24',
+                'img_welcome' => 'mimes:jpeg,jpg,png|max:4096',
+                'title_welcome' => 'required|min:3|max:32',
+                'desc_welcome' => 'required|min:3|max:512',
+                'yt_id' => 'required|min:3|max:15'
+            ]
+        );
+        $img_c1 = null;
+        $img_c2 = null;
+        $img_c3 = null;
+        $img_welcome = null;
+        $ipage = $this->UserModel->index();
+        if ($req->img_c1) {
+            $photo_path = public_path('user/img/' . $ipage->img_c1);
+            if (!empty($ipage->img_c1)) {
+                unlink($photo_path);
+            }
+            $img = $req->img_c1;
+            $img_c1 = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('user/img'), $img_c1);
+        }
+        if ($req->img_c2) {
+            $photo_path = public_path('user/img/' . $ipage->img_c2);
+            if (!empty($ipage->img_c2)) {
+                unlink($photo_path);
+            }
+            $img = $req->img_c2;
+            $img_c2 = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('user/img'), $img_c2);
+        }
+        if ($req->img_c3) {
+            $photo_path = public_path('user/img/' . $ipage->img_c3);
+            if (!empty($ipage->img_c3)) {
+                unlink($photo_path);
+            }
+            $img = $req->img_c3;
+            $img_c3 = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('user/img'), $img_c3);
+        }
+        if ($req->img_welcome) {
+            $photo_path = public_path('user/img/' . $ipage->img_welcome);
+            if (!empty($ipage->img_welcome)) {
+                unlink($photo_path);
+            }
+            $img = $req->img_welcome;
+            $img_welcome = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('user/img'), $img_welcome);
+        }
+        $data = [
+            'title' => $req->title,
+            'img_c1' => $img_c1,
+            'img_c2' => $img_c2,
+            'img_c3' => $img_c3,
+            'img_welcome' => $img_welcome,
+            'title_c1' => $req->title_c1,
+            'title_c2' => $req->title_c2,
+            'title_c3' => $req->title_c3,
+            'desc_c1' => $req->desc_c1,
+            'desc_c2' => $req->desc_c2,
+            'desc_c3' => $req->desc_c3,
+            'title_welcome' => $req->title_welcome,
+            'desc_welcome' => $req->desc_welcome,
+            'yt_id' => $req->yt_id
+        ];
+        $this->AdminModel->updiPage($data);
+        $notif = [
+            'pesan' => 'Index page updated!',
+            'alert' => 'success'
+        ];
+        return redirect()->back()->with($notif);
+    }
+    //End of Manage Page
 }
