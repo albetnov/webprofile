@@ -15,11 +15,6 @@ class UserModel extends Model
         return DB::table('basecms')->first();
     }
 
-    public function index()
-    {
-        return DB::table('ipage')->first();
-    }
-
     public function about()
     {
         return DB::table('apage')->first();
@@ -34,5 +29,4 @@ class UserModel extends Model
     {
         return DB::table('spage')->limit(3)->get();
     }
-
 }

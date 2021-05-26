@@ -111,19 +111,19 @@
                                         <option value="admin">Admin</option>
                                         <option value="staff">Staff</option>
                                     </select>
+                                    @error('level')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             @endif
-                            @error('level')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
+                            <div class="form-group">
+                                <button type="button" onclick="location.href='{{ route('useracc') }}'"
+                                    class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i></button>
+                                <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save"></i></button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <button type="button" onclick="location.href='{{ route('useracc') }}'"
-                            class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i></button>
-                        <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save"></i></button>
-                    </div>
-                    </form>
                 </div>
+            </section>
         </div>
-        </section>
-    </div>
-@endsection
+    @endsection

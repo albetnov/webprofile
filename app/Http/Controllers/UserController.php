@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\UserModel;
 use App\Models\User;
 use App\Models\UserContact;
+use App\Models\HomePage;
 
 class UserController extends Controller
 {
@@ -18,7 +19,7 @@ class UserController extends Controller
     {
         $data = [
             'basecms' => $this->UserModel->basecms(),
-            'ipg' => $this->UserModel->index(),
+            'ipg' => HomePage::first(),
             'service' => $this->UserModel->Iservice(),
             'team' => User::limit(4)->get()
         ];
@@ -69,7 +70,7 @@ class UserController extends Controller
                 'subject_contact' => 'required|min:3|max:64',
                 'message_contact' => 'required|min:15|max:1024'
             ]
-        );   
+        );
         $data = [
             'name_contact' => $req->name_contact,
             'email_contact' => $req->email_contact,
@@ -83,5 +84,4 @@ class UserController extends Controller
         ];
         return redirect()->back()->with($notif);
     }
-
 }

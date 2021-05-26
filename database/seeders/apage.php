@@ -18,12 +18,12 @@ class apage extends Seeder
             'id' => '1',
             'about_img' => 'ab_img.jpg',
             'work_exp' => '10',
-            'about_title' => 'Apa itu Kuli?',
-            'about_p1' => 'Kuli merupakan sebuah jasa pembangunan yang sudah dipercaya lebih dari
-            10 Tahun. Bersama dengan para pembangun yang sudah bersertifikat dan profesional. Bukan,
-            tidak mungkin bagi kami untuk merealisasikan mimpi anda.',
-            'about_p2' => 'Kenapa harus kami? Karena kami dapat merealisasikan tempat ataupun bangunan
-            idaman anda semirip dan sebagus mungkin lebih dari siapapun. Ya, saya tidak berbohong. Ayolah
+            'about_title' => 'Apa itu Dev.net?',
+            'about_p1' => 'Dev.net merupakan perusahaan Software House Nomor 1. Iya nomor 1. Di Dev.net
+            Hampi semua pasti jadi. Selain, membuat software kami juga membuka training. Jadi datanglah!',
+            'about_p2' => 'di Dev.net Software impian anda pasti jadi. Hah Ayo dong
+            Basa basi oh basa basi. 1.2.3 teks. panjang. ayok raih. panjang.
+            huahuhauhau. Ya, saya tidak berbohong. Ayolah
             ini cuman sample. Saya sedang berbasa-basi ini. Ayo dong jadilah 1 kalimat... Oke sudah jadi :v'
         ]);
     }

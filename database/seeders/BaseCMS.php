@@ -18,10 +18,10 @@ class BaseCMS extends Seeder
             [
                 'id' => '1',
                 'favicon' => 'default.ico',
-                'app_name' => 'Kuli',
+                'app_name' => 'Dev.net',
                 'call_us' => '62812101920',
-                'email' => 'contoh@mail.com',
-                'location' => '1-1 Osakajo, Chuo Ward, Osaka, 540-0002, Jepang',
+                'email' => 'dev@soft.net',
+                'location' => 'Batam Center, Batam, Kepuluan Riau, Indonesia.',
                 'fb_link' => 'https://www.facebook.com/robby.tanizar',
                 'ig_link' => 'https://instagram.com/al_nv23',
                 'quote' => 'The only way to do great work is to love what you do.',

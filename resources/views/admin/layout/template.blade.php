@@ -61,6 +61,27 @@
                                 </li>
                             </ul>
                         </li>
+
+                        <li class="sidebar-item has-sub {{ request()->is('admin/page*') ? 'active' : '' }}">
+                            <a href="#" class="sidebar-link">
+                                <i class="fas fa-pager"></i>
+                                <span>Manage Page</span>
+                            </a>
+                            <ul class="submenu {{ request()->is('admin/page*') ? 'active' : '' }}">
+                                <li
+                                    class="submenu-item {{ request()->is('admin/page/change_base') ? 'active' : '' }}">
+                                    <a href="{{ route('adjbase') }}">Change Base Page</a>
+                                </li>
+                                <li
+                                    class="submenu-item {{ request()->is('admin/page/change_home') ? 'active' : '' }}">
+                                    <a href="{{ route('adjhome') }}">Change Home Page</a>
+                                </li>
+                                <li
+                                    class="submenu-item {{ request()->is('admin/page/change_about') ? 'active' : '' }}">
+                                    <a href="{{ route('adjabout') }}">Change About Page</a>
+                                </li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
                 <button class="sidebar-toggler btn x">

@@ -18,8 +18,7 @@
                     <div class="col-12 col-md-6 order-md-2 order-first">
                         <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item">Manage User</li>
-                                <li class="breadcrumb-item"><a href="{{ route('useracc') }}">User Account</a></li>
+                                <li class="breadcrumb-item">Manage Page</li>
                                 <li class="breadcrumb-item active" aria-current="page">Change Home Page</li>
                             </ol>
                         </nav>
@@ -32,99 +31,82 @@
                         <h4 class="card-title">Change Home Page Form</h4>
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('actaddusr') }}" enctype="multipart/form-data" method="post">
+                        <form action="{{ route('edthome') }}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="form-group">
                                 <label>Title:</label><br>
                                 <input type="text" name="title" class="form-control @error('title') is-invalid @enderror"
-                                    placeholder="Change title...">
+                                    placeholder="Change title..." value="{{ old('title', $ipage->title) }}">
                                 @error('title')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Image C1:</label>
-                                <input type="file" name="img_c1" class="form-control @error('img_c1') is-invalid @enderror"
-                                    placeholder="img_c1..." value="{{ old('img_c1') }}">
-                                @error('img_c1')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
+                                <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#ubahImgCorousel"><i class="fas fa-images"></i> Change
+                                    Corousel Image</button>
                             </div>
                             <div class="form-group">
-                                <label>Title C1:</label>
+                                <label>Title Corousel 1:</label>
                                 <input type="text" name="title_c1"
-                                    class="form-control @error('title_c1') is-invalid @enderror" placeholder="title_c1..."
-                                    value="{{ old('title_c1') }}">
+                                    class="form-control @error('title_c1') is-invalid @enderror"
+                                    placeholder="Title Corousel 1..." value="{{ old('title_c1', $ipage->title_c1) }}">
                                 @error('title_c1')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Description C1:</label>
+                                <label>Description Corousel 1:</label>
                                 <input type="text" name="desc_c1"
-                                    class="form-control @error('desc_c1') is-invalid @enderror" placeholder="desc_c1..."
-                                    value="{{ old('desc_c1') }}">
+                                    class="form-control @error('desc_c1') is-invalid @enderror"
+                                    placeholder="Desc Corousel 1" value="{{ old('desc_c1', $ipage->desc_c1) }}">
                                 @error('desc_c1')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Image C2:</label>
-                                <input type="file" name="img_c2" class="form-control @error('img_c2') is-invalid @enderror"
-                                    placeholder="img_c2..." value="{{ old('img_c2') }}">
-                                @error('img_c2')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Title C2:</label>
+                                <label>Title Corousel 2:</label>
                                 <input type="text" name="title_c2"
-                                    class="form-control @error('title_c2') is-invalid @enderror" placeholder="title_c2..."
-                                    value="{{ old('title_c2') }}">
+                                    class="form-control @error('title_c2') is-invalid @enderror"
+                                    placeholder="Title Corousel 2..." value="{{ old('title_c2', $ipage->title_c2) }}">
                                 @error('title_c2')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Description C2:</label>
+                                <label>Description Corousel 2:</label>
                                 <input type="text" name="desc_c2"
-                                    class="form-control @error('desc_c2') is-invalid @enderror" placeholder="desc_c2..."
-                                    value="{{ old('desc_c2') }}">
+                                    class="form-control @error('desc_c2') is-invalid @enderror"
+                                    placeholder="Desc Corousel 2..." value="{{ old('desc_c2', $ipage->desc_c2) }}">
                                 @error('desc_c2')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Image C3:</label>
-                                <input type="file" name="img_c3" class="form-control @error('img_c3') is-invalid @enderror"
-                                    placeholder="img_c3..." value="{{ old('img_c3') }}">
-                                @error('img_c3')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <div class="form-group">
-                                <label>Title C3:</label>
+                                <label>Title Corousel 3:</label>
                                 <input type="text" name="title_c3"
-                                    class="form-control @error('title_c3') is-invalid @enderror" placeholder="title_c3..."
-                                    value="{{ old('title_c3') }}">
+                                    class="form-control @error('title_c3') is-invalid @enderror"
+                                    placeholder="Title Corousel 1..." value="{{ old('title_c3', $ipage->title_c3) }}">
                                 @error('title_c3')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Description C3:</label>
+                                <label>Description Corousel 3:</label>
                                 <input type="text" name="desc_c3"
-                                    class="form-control @error('desc_c3') is-invalid @enderror" placeholder="desc_c3..."
-                                    value="{{ old('desc_c3') }}">
+                                    class="form-control @error('desc_c3') is-invalid @enderror"
+                                    placeholder="Desc Corousel 1..." value="{{ old('desc_c3', $ipage->desc_c3) }}">
                                 @error('desc_c3')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Welcome Image:</label>
+                                <label>Welcome Image:</label><br>
+                                <label>Current:<br><img src="{{ asset("user/img/$ipage->img_welcome") }}" width="240"
+                                        height="128"></label>
                                 <input type="file" name="img_welcome"
                                     class="form-control @error('img_welcome') is-invalid @enderror"
-                                    placeholder="img_welcome..." value="{{ old('img_welcome') }}">
+                                    placeholder="Welcome Image..." value="{{ old('img_welcome') }}">
                                 @error('img_welcome')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -133,31 +115,39 @@
                                 <label>Welcome Title:</label>
                                 <input type="text" name="title_welcome"
                                     class="form-control @error('title_welcome') is-invalid @enderror"
-                                    placeholder="title_welcome..." value="{{ old('title_welcome') }}">
+                                    placeholder="Welcome Title..."
+                                    value="{{ old('title_welcome', $ipage->title_welcome) }}">
                                 @error('title_welcome')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label>Welcome Description:</label>
-                                <input type="text" name="desc_welcome"
+                                <textarea name="desc_welcome"
                                     class="form-control @error('desc_welcome') is-invalid @enderror"
-                                    placeholder="desc_welcome..." value="{{ old('desc_welcome') }}">
+                                    rows="5">{{ old('desc_welcome', $ipage->desc_welcome) }}</textarea>
                                 @error('desc_welcome')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Yt ID:</label>
+                                <label>Youtube ID:</label>
                                 <input type="text" name="yt_id" class="form-control @error('yt_id') is-invalid @enderror"
-                                    placeholder="yt_id..." value="{{ old('yt_id') }}">
+                                    placeholder="Youtube ID..." value="{{ old('yt_id', $ipage->yt_id) }}">
                                 @error('yt_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <button type="button" onclick="location.href='{{ route('useracc') }}'"
-                                    class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i></button>
+                                <label>Youtube Background:</label><br>
+                                <label>Current:<br> <img src="{{ asset('user/img/vid_bg.jpg') }}" width="240"
+                                        height="128"></label>
+                                <input type="file" name="yt_bg" class="form-control @error('yt_bg') is-invalid @enderror">
+                                @error('yt_bg')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-save"></i></button>
                             </div>
                         </form>
@@ -165,4 +155,55 @@
                 </div>
             </section>
         </div>
+        {{-- Start Modal --}}
+        <div class="modal fade" id="ubahImgCorousel" tabindex="-1" data-bs-backdrop="static"
+            aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Change Corousel Image</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('chchome') }}" enctype="multipart/form-data" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label>Image Corousel 1:</label><br>
+                                <label>Current:<br> <img src="{{ asset("user/img/$ipage->img_c1") }}" width="240"
+                                        height="128"></label>
+                                <input type="file" name="img_c1" class="form-control @error('img_c1') is-invalid @enderror"
+                                    placeholder="Image Corousel 1...">
+                                @error('img_c1')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Image Corousel 2:</label><br>
+                                <label>Current:<br> <img src="{{ asset("user/img/$ipage->img_c2") }}" width="240"
+                                        height="128"></label>
+                                <input type="file" name="img_c2" class="form-control @error('img_c2') is-invalid @enderror"
+                                    placeholder="Image Corousel 2...">
+                                @error('img_c2')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Image Corousel 3:</label><br>
+                                <label>Current:<br><img src="{{ asset("user/img/$ipage->img_c3") }}" width="240"
+                                        height="128"></label>
+                                <input type="file" name="img_c3" class="form-control @error('img_c3') is-invalid @enderror"
+                                    placeholder="Image Corousel 3...">
+                                @error('img_c3')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{-- End Modal --}}
     @endsection

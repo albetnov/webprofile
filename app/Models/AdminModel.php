@@ -15,8 +15,8 @@ class AdminModel extends Model
         DB::table('basecms')->update($data);
     }
 
-    public function updiPage($data)
+    public function updAboutPage($data)
     {
-        DB::table('ipage')->update($data);
+        DB::table('apage')->update($data);
     }
 }

@@ -8,6 +8,7 @@ use App\Models\AdminModel;
 use App\Models\UserContact;
 use Illuminate\Support\Facades\Hash;
 use App\Models\UserModel;
+use App\Models\HomePage;
 
 class AdminController extends Controller
 {
@@ -397,12 +398,12 @@ class AdminController extends Controller
     }
     //End of Manage User
     //Start of Manage Page
-    public function basecms()
+    public function getbase()
     {
         $data = [
             'bscms' => $this->UserModel->basecms()
         ];
-        return view('', $data);
+        return view('admin.pageadj.changebase', $data);
     }
 
     public function base_edit(Request $req)
@@ -460,39 +461,81 @@ class AdminController extends Controller
         return redirect()->back()->with($notif);
     }
 
-    public function ipage()
+    public function gethome()
     {
         $data = [
-            'ipage' => $this->UserModel->index()
+            'ipage' => HomePage::first()
         ];
-        return view('', $data);
+        return view('admin.pageadj.changehome', $data);
     }
 
-    public function act_ipage(Request $req)
+    public function act_home(Request $req)
     {
         $req->validate(
             [
                 'title' => 'required|min:3|max:20',
-                'img_c1' => 'mimes:jpeg,jpg,png|max:4096',
-                'img_c2' => 'mimes:jpeg,jpg,png|max:4096',
-                'img_c3' => 'mimes:jpeg,jpg,png|max:4096',
                 'title_c1' => 'required|min:3|max:32',
                 'title_c2' => 'required|min:3|max:32',
                 'title_c3' => 'required|min:3|max:32',
                 'desc_c1' => 'required|min:3|max:24',
                 'desc_c2' => 'required|min:3|max:24',
                 'desc_c3' => 'required|min:3|max:24',
-                'img_welcome' => 'mimes:jpeg,jpg,png|max:4096',
+                'img_welcome' => 'nullable|mimes:jpeg,jpg,png|max:4096',
                 'title_welcome' => 'required|min:3|max:32',
                 'desc_welcome' => 'required|min:3|max:512',
-                'yt_id' => 'required|min:3|max:15'
+                'yt_id' => 'required|min:3|max:15',
+                'yt_bg' => 'nullable|mimes:jpg|max:4096'
             ]
         );
-        $img_c1 = null;
-        $img_c2 = null;
-        $img_c3 = null;
-        $img_welcome = null;
-        $ipage = $this->UserModel->index();
+        $ipage = HomePage::first();
+        if ($req->img_welcome) {
+            $photo_path = public_path('user/img/' . $ipage->img_welcome);
+            if (!empty($ipage->img_welcome)) {
+                unlink($photo_path);
+            }
+            $img = $req->img_welcome;
+            $img_welcome = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('user/img'), $img_welcome);
+            $data = [
+                'title' => $req->title,
+                'title_c1' => $req->title_c1,
+                'title_c2' => $req->title_c2,
+                'title_c3' => $req->title_c3,
+                'desc_c1' => $req->desc_c1,
+                'desc_c2' => $req->desc_c2,
+                'desc_c3' => $req->desc_c3,
+                'img_welcome' => $img_welcome,
+                'title_welcome' => $req->title_welcome,
+                'desc_welcome' => $req->desc_welcome,
+                'yt_id' => $req->yt_id
+            ];
+        }
+        if ($req->yt_bg) {
+            $img = $req->yt_bg;
+            $img_ytbg = 'vid_bg.jpg';
+            $img->move(public_path('user/img'), $img_ytbg);
+        }
+        if (!$req->img_welcome) {
+            $data = array_filter($req->except('_token', 'yt_bg'));
+        }
+        HomePage::where('id', '1')->update($data);
+        $notif = [
+            'pesan' => 'Index page updated!',
+            'alert' => 'success'
+        ];
+        return redirect()->back()->with($notif);
+    }
+
+    public function chbg_home(Request $req)
+    {
+        $req->validate(
+            [
+                'img_c1' => 'nullable|mimes:jpeg,jpg,png|max:4096',
+                'img_c2' => 'nullable|mimes:jpeg,jpg,png|max:4096',
+                'img_c3' => 'nullable|mimes:jpeg,jpg,png|max:4096'
+            ]
+        );
+        $ipage = HomePage::first();
         if ($req->img_c1) {
             $photo_path = public_path('user/img/' . $ipage->img_c1);
             if (!empty($ipage->img_c1)) {
@@ -501,6 +544,10 @@ class AdminController extends Controller
             $img = $req->img_c1;
             $img_c1 = time() . '.' . $img->getClientOriginalName();
             $img->move(public_path('user/img'), $img_c1);
+            $data = [
+                'img_c1' => $img_c1
+            ];
+            HomePage::where('id', '1')->update($data);
         }
         if ($req->img_c2) {
             $photo_path = public_path('user/img/' . $ipage->img_c2);
@@ -510,6 +557,10 @@ class AdminController extends Controller
             $img = $req->img_c2;
             $img_c2 = time() . '.' . $img->getClientOriginalName();
             $img->move(public_path('user/img'), $img_c2);
+            $data = [
+                'img_c2' => $img_c2
+            ];
+            HomePage::where('id', '1')->update($data);
         }
         if ($req->img_c3) {
             $photo_path = public_path('user/img/' . $ipage->img_c3);
@@ -519,38 +570,68 @@ class AdminController extends Controller
             $img = $req->img_c3;
             $img_c3 = time() . '.' . $img->getClientOriginalName();
             $img->move(public_path('user/img'), $img_c3);
+            $data = [
+                'img_c3' => $img_c3
+            ];
+            HomePage::where('id', '1')->update($data);
         }
-        if ($req->img_welcome) {
-            $photo_path = public_path('user/img/' . $ipage->img_welcome);
-            if (!empty($ipage->img_welcome)) {
-                unlink($photo_path);
-            }
-            $img = $req->img_welcome;
-            $img_welcome = time() . '.' . $img->getClientOriginalName();
-            $img->move(public_path('user/img'), $img_welcome);
-        }
-        $data = [
-            'title' => $req->title,
-            'img_c1' => $img_c1,
-            'img_c2' => $img_c2,
-            'img_c3' => $img_c3,
-            'img_welcome' => $img_welcome,
-            'title_c1' => $req->title_c1,
-            'title_c2' => $req->title_c2,
-            'title_c3' => $req->title_c3,
-            'desc_c1' => $req->desc_c1,
-            'desc_c2' => $req->desc_c2,
-            'desc_c3' => $req->desc_c3,
-            'title_welcome' => $req->title_welcome,
-            'desc_welcome' => $req->desc_welcome,
-            'yt_id' => $req->yt_id
-        ];
-        $this->AdminModel->updiPage($data);
         $notif = [
-            'pesan' => 'Index page updated!',
+            'pesan' => 'Pergantian Corousel berhasil.',
             'alert' => 'success'
         ];
         return redirect()->back()->with($notif);
     }
+
+    public function getabout()
+    {
+        $data = [
+            'gab' => $this->UserModel->about()
+        ];
+        return view('admin.pageadj.changeabout', $data);
+    }
+
+    public function about_edit(Request $req)
+    {
+        $req->validate(
+            [
+                'about_img' => 'nullable|max:4096|mimes:jpg,jpeg,png',
+                'work_exp' => 'required|numeric|max:500',
+                'about_title' => 'required|min:3|max:20',
+                'about_p1' => 'required|min:3|max:768',
+                'about_p2' => 'required|min:3|max:768',
+            ]
+        );
+        if (!$req->about_img) {
+            $data = [
+                'work_exp' => $req->work_exp,
+                'about_title' => $req->about_title,
+                'about_p1' => $req->about_p1,
+                'about_p2' => $req->about_p2
+            ];
+        } else {
+            $apage = $this->UserModel->about();
+            $photo_path = public_path('user/img/' . $apage->about_img);
+            if (!empty($apage->about_img)) {
+                unlink($photo_path);
+            }
+            $img = $req->about_img;
+            $img_about = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('user/img'), $img_about);
+            $data = [
+                'about_img' => $img_about,
+                'work_exp' => $req->work_exp,
+                'about_title' => $req->about_title,
+                'about_p1' => $req->about_p1,
+                'about_p2' => $req->about_p2
+            ];
+        }
+        $this->AdminModel->updAboutPage($data);
+        $notif = [
+            'pesan' => 'About page updated!',
+            'alert' => 'success'
+        ];
+        return redirect()->back()->with($notif);
+    }
+
     //End of Manage Page
 }
