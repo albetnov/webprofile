@@ -75,7 +75,7 @@
                     <p>2021 &copy; Admin Panel</p>
                 </div>
                 <div class="float-end">
-                    <p>Crafted with Robby and Albet Novendo</p>
+                    <p>Crafted By Robby and Albet Novendo</p>
                 </div>
             </div>
         </footer>
