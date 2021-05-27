@@ -4,6 +4,7 @@ use App\Http\Controllers\ManageLogin;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StaffController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,6 @@ Route::get('/service', [UserController::class, 'service'])->name('service');
 Route::get('/team', [UserController::class, 'team'])->name('team');
 Route::get('/contact', [UserController::class, 'contact'])->name('contact');
 Route::post('/send_contact', [UserController::class, 'send_contact'])->name('scontact');
-Route::view('/staffedit', 'admin/pageadj/editstaff');
-Route::view('/staff', 'admin/pageadj/staff');
 //Login
 Route::view('/login', 'auth.login')->name('login');
 Route::post('/otwmasuk', [ManageLogin::class, 'proses_login'])->name('login_akun');
@@ -65,9 +64,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/admin/page/service/edit/{id}', [AdminController::class, 'editsvc']);
         Route::post('/admin/page/service/edit/save/{id}', [AdminController::class, 'act_editsvc']);
         Route::get('/admin/page/service/delete/{id}', [AdminController::class, 'delsvc']);
+        //Staff Announcement
+        Route::get('/admin/staff/staff_announcement', [AdminController::class, 'getstaff'])->name('staffanc');
+        Route::view('/admin/staff/add', 'admin.staff.addstaffanc')->name('addstaffanc');
+        Route::post('/admin/staff/save', [AdminController::class, 'savestaffanc'])->name('savestaffanc');
+        Route::get('/admin/staff/edit/{id}', [AdminController::class, 'editstfanc']);
+        Route::post('/admin/staff/save_edit/{id}', [AdminController::class, 'act_editstfanc']);
+        Route::get('/admin/staff/delete/{id}', [AdminController::class, 'del_staffanc']);
     });
     Route::group(['middleware' => ['cek_level:staff']], function () {
-        Route::view('/staff/dashboard', 'admin.test');
+        Route::get('/staff_announcement', [StaffController::class, 'index'])->name('index_staff');
     });
     Route::get('/logout', [ManageLogin::class, 'logout'])->name('logout');
 });

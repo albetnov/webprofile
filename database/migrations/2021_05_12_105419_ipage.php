@@ -13,7 +13,7 @@ class Ipage extends Migration
      */
     public function up()
     {
-        Schema::create('ipage', function (Blueprint $table){
+        Schema::create('ipage', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('img_c1');
@@ -39,6 +39,6 @@ class Ipage extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('ipage');
     }
 }

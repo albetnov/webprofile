@@ -9,6 +9,7 @@ use App\Models\UserContact;
 use Illuminate\Support\Facades\Hash;
 use App\Models\UserModel;
 use App\Models\HomePage;
+use App\Models\Staff;
 
 class AdminController extends Controller
 {
@@ -367,7 +368,7 @@ class AdminController extends Controller
     public function getcontact()
     {
         $data = [
-            'getcontact' => UserContact::get()
+            'getcontact' => UserContact::lazy()
         ];
         return view('admin.user.contact', $data);
     }
@@ -735,6 +736,115 @@ class AdminController extends Controller
         ];
         return redirect()->back()->with($notif);
     }
-
     //End of Manage Page
+    //Start of Staff Announcement
+    public function getstaff()
+    {
+        $data = [
+            'staff' => Staff::get()
+        ];
+        return view('admin.staff.staffanc', $data);
+    }
+
+    public function savestaffanc(Request $req)
+    {
+        $req->validate(
+            [
+                'info_img' => 'nullable|max:2048|mimes:jpeg,jpg,png',
+                'info_title' => 'required|min:3|max:20',
+                'info_desc' => 'required|min:3|max:768'
+            ]
+        );
+        if (!$req->info_img) {
+            $data = [
+                'info_title' => $req->info_title,
+                'info_desc' => $req->info_desc
+            ];
+        } else {
+            $img = $req->info_img;
+            $img_info = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('staffinfo'), $img_info);
+            $data = [
+                'info_img' => $img_info,
+                'info_title' => $req->info_title,
+                'info_desc' => $req->info_desc
+            ];
+        }
+        Staff::create($data);
+        $notif = [
+            'pesan' => 'Announcement added!',
+            'alert' => 'success'
+        ];
+        return redirect()->route('staffanc')->with($notif);
+    }
+
+    public function editstfanc($id)
+    {
+        $stfanc = Staff::where('id', $id)->first();
+        if (!$stfanc) {
+            abort(404);
+        }
+        $data = [
+            'sp' => $stfanc
+        ];
+        return view('admin.staff.editstaffanc', $data);
+    }
+
+    public function act_editstfanc(Request $req, $id)
+    {
+        $stfanc = Staff::where('id', $id)->first();
+        if (!$stfanc) {
+            abort(404);
+        }
+        $req->validate(
+            [
+                'info_img' => 'nullable|max:2048|mimes:jpeg,jpg,png',
+                'info_title' => 'required|min:3|max:20',
+                'info_desc' => 'required|min:3|max:768'
+            ]
+        );
+        if (!$req->info_img) {
+            $data = [
+                'info_title' => $req->info_title,
+                'info_desc' => $req->info_desc
+            ];
+        } else {
+            $photo_path = public_path('staffinfo/' . $stfanc->info_img);
+            if (!empty($stfanc->info_img)) {
+                unlink($photo_path);
+            }
+            $img = $req->info_img;
+            $img_info = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('staffinfo'), $img_info);
+            $data = [
+                'info_img' => $img_info,
+                'info_title' => $req->info_title,
+                'info_desc' => $req->info_desc
+            ];
+        }
+        Staff::where('id', $id)->update($data);
+        $notif = [
+            'pesan' => 'Staff Announcement Updated!',
+            'alert' => 'success'
+        ];
+        return redirect()->route('staffanc')->with($notif);
+    }
+    public function del_staffanc($id)
+    {
+        $stfanc = Staff::where('id', $id)->first();
+        if (!$stfanc) {
+            abort(404);
+        }
+        $photo_path = public_path('staffinfo/' . $stfanc->info_img);
+        if (!empty($stfanc->info_img)) {
+            unlink($photo_path);
+        }
+        Staff::where('id', $id)->delete();
+        $notif = [
+            'pesan' => 'Announcement Deleted!',
+            'alert' => 'success'
+        ];
+        return redirect()->back()->with($notif);
+    }
+    //End of Staff Announcement
 }

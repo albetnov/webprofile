@@ -15,7 +15,7 @@ class Staffanc extends Migration
     {
         Schema::create('stfinfo', function (Blueprint $table) {
             $table->id();
-            $table->string('info_img');
+            $table->string('info_img')->nullable(true);
             $table->string('info_title');
             $table->longText('info_desc');
             $table->timestamps();
@@ -29,6 +29,6 @@ class Staffanc extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('stfinfo');
     }
 }

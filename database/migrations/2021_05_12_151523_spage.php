@@ -13,7 +13,7 @@ class Spage extends Migration
      */
     public function up()
     {
-        Schema::create('spage', function (Blueprint $table){
+        Schema::create('spage', function (Blueprint $table) {
             $table->id();
             $table->string('service_img');
             $table->string('service_title');
@@ -28,6 +28,6 @@ class Spage extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('spage');
     }
 }

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/vendors/fontawesome/all.min.css">
     <link rel="stylesheet" href="{{ asset('assets/vendors/toastr/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendors/simple-datatables/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('assets') }}/images/favicon.svg" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.ico') }}" type="image/x-icon">
 </head>
 
 <body>
@@ -84,6 +84,12 @@
                                     <a href="{{ route('adjservice') }}">Change Service Page</a>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="sidebar-item {{ request()->is('admin/staff*') ? ' active' : '' }}">
+                            <a href="{{ route('staffanc') }}" class="sidebar-link">
+                                <i class="fas fa-user-tag"></i>
+                                <span>Staff Announcement</span>
+                            </a>
                         </li>
                         <li class="sidebar-item">
                             <a href="{{ route('logout') }}" class="sidebar-link">

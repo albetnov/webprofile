@@ -13,7 +13,7 @@ class Apage extends Migration
      */
     public function up()
     {
-        Schema::create('apage', function (Blueprint $table){
+        Schema::create('apage', function (Blueprint $table) {
             $table->id();
             $table->string('about_img');
             $table->integer('work_exp', false, true);
@@ -30,6 +30,6 @@ class Apage extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('apage');
     }
 }

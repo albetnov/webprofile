@@ -13,7 +13,7 @@ class Basecms extends Migration
      */
     public function up()
     {
-        Schema::create('basecms', function (Blueprint $table){
+        Schema::create('basecms', function (Blueprint $table) {
             $table->id();
             $table->string('favicon');
             $table->string('app_name');
@@ -34,6 +34,6 @@ class Basecms extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('basecms');
     }
 }

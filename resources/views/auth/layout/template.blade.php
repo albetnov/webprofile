@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/app.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/pages/auth.css">
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.ico') }}" type="image/x-icon">
 </head>
 
 <body>
@@ -19,8 +20,9 @@
 
         </div>
     </div>
-</div>
+    </div>
 
-</div>
+    </div>
 </body>
+
 </html>

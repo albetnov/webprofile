@@ -25,7 +25,7 @@ class ManageLogin extends Controller
                 $req->session()->put('nama', $user->name);
                 $req->session()->put('id', $user->id);
                 $req->session()->put('level', $user->level);
-                return redirect('staff/dashboard');
+                return redirect()->route('index_staff');
             }
         } else {
             $notif = [
@@ -40,6 +40,10 @@ class ManageLogin extends Controller
     {
         request()->session()->flush();
         Auth::logout();
-        return redirect()->route('login');
+        $notif = [
+            'pesan' => 'Logged out',
+            'alert' => 'success'
+        ];
+        return redirect()->route('login')->with($notif);
     }
 }
