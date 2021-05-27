@@ -22,6 +22,8 @@ Route::get('/service', [UserController::class, 'service'])->name('service');
 Route::get('/team', [UserController::class, 'team'])->name('team');
 Route::get('/contact', [UserController::class, 'contact'])->name('contact');
 Route::post('/send_contact', [UserController::class, 'send_contact'])->name('scontact');
+Route::view('/service', 'admin/pageadj/service');
+Route::view('/servicepage', 'admin/pageadj/changeservice');
 //Login
 Route::view('/login', 'auth.login')->name('login');
 Route::post('/otwmasuk', [ManageLogin::class, 'proses_login'])->name('login_akun');
