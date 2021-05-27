@@ -80,7 +80,16 @@
                                     class="submenu-item {{ request()->is('admin/page/change_about') ? 'active' : '' }}">
                                     <a href="{{ route('adjabout') }}">Change About Page</a>
                                 </li>
+                                <li class="submenu-item {{ request()->is('admin/page/service') ? 'active' : '' }}">
+                                    <a href="{{ route('adjservice') }}">Change Service Page</a>
+                                </li>
                             </ul>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ route('logout') }}" class="sidebar-link">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Logout</span>
+                            </a>
                         </li>
                     </ul>
                 </div>

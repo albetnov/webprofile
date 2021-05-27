@@ -207,3 +207,15 @@
         </div>
         {{-- End Modal --}}
     @endsection
+    @section('modscript')
+        @if (count($errors) > 0)
+            <script>
+                @if ($errors->has('img_c1') or $errors->has('img_c2') or $errors->has('img_c3'))
+                    $(document).ready(function(){
+                    $("#ubahImgCorousel").modal('show');
+                    });
+                @endif
+
+            </script>
+        @endif
+    @endsection

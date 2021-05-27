@@ -633,5 +633,108 @@ class AdminController extends Controller
         return redirect()->back()->with($notif);
     }
 
+    public function getservice()
+    {
+        $data = [
+            'servicepg' => $this->UserModel->service()
+        ];
+        return view('admin.pageadj.service', $data);
+    }
+
+    public function add_service(Request $req)
+    {
+        $req->validate(
+            [
+                'service_img' => 'required|max:2048|mimes:jpg,jpeg,png',
+                'service_title' => 'required|min:3|max:20',
+                'service_desc' => 'required|min:3|max:128'
+            ]
+        );
+        $img = $req->service_img;
+        $img_service = time() . '.' . $img->getClientOriginalName();
+        $img->move(public_path('user/img'), $img_service);
+        $data = [
+            'service_img' => $img_service,
+            'service_title' => $req->service_title,
+            'service_desc' => $req->service_desc
+        ];
+        $this->AdminModel->SaveService($data);
+        $notif = [
+            'pesan' => 'Service added!',
+            'alert' => 'success'
+        ];
+        return redirect()->route('adjservice')->with($notif);
+    }
+
+    public function editsvc($id)
+    {
+        $sp = $this->AdminModel->DetService($id);
+        if (!$sp) {
+            abort(404);
+        }
+        $data = [
+            'sp' => $sp
+        ];
+        return view('admin.pageadj.editservice', $data);
+    }
+
+    public function act_editsvc(Request $req, $id)
+    {
+        $sp = $this->AdminModel->DetService($id);
+        if (!$sp) {
+            abort(404);
+        }
+        $req->validate(
+            [
+                'service_img' => 'nullable|mimes:jpg,jpeg,jpg|max:2048',
+                'service_title' => 'required|min:3|max:20',
+                'service_desc' => 'required|min:3|max:128'
+            ]
+        );
+        if (!$req->service_img) {
+            $data = [
+                'service_title' => $req->service_title,
+                'service_desc' => $req->service_desc
+            ];
+        } else {
+            $photo_path = public_path('user/img/' . $sp->service_img);
+            if (!empty($sp->service_img)) {
+                unlink($photo_path);
+            }
+            $img = $req->service_img;
+            $img_service = time() . '.' . $img->getClientOriginalName();
+            $img->move(public_path('user/img'), $img_service);
+            $data = [
+                'service_img' => $img_service,
+                'service_title' => $req->service_title,
+                'service_desc' => $req->service_desc
+            ];
+        }
+        $this->AdminModel->updService($data, $id);
+        $notif = [
+            'pesan' => 'Service updated!',
+            'alert' => 'success'
+        ];
+        return redirect()->route('adjservice')->with($notif);
+    }
+
+    public function delsvc($id)
+    {
+        $sp = $this->AdminModel->DetService($id);
+        if (!$sp) {
+            abort(404);
+        }
+        $photo_path = public_path('user/img/' . $sp->service_img);
+        if (!empty($sp->service_img)) {
+            unlink($photo_path);
+        }
+        $this->AdminModel->delService($id);
+        $notif = [
+            'pesan' => 'Service deleted!',
+            'alert' => 'success'
+        ];
+        return redirect()->back()->with($notif);
+    }
+
     //End of Manage Page
 }

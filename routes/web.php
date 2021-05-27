@@ -22,8 +22,6 @@ Route::get('/service', [UserController::class, 'service'])->name('service');
 Route::get('/team', [UserController::class, 'team'])->name('team');
 Route::get('/contact', [UserController::class, 'contact'])->name('contact');
 Route::post('/send_contact', [UserController::class, 'send_contact'])->name('scontact');
-Route::view('/service', 'admin/pageadj/service');
-Route::view('/servicepage', 'admin/pageadj/changeservice');
 //Login
 Route::view('/login', 'auth.login')->name('login');
 Route::post('/otwmasuk', [ManageLogin::class, 'proses_login'])->name('login_akun');
@@ -48,13 +46,23 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/admin/user/viscontact/detail/{id}', [AdminController::class, 'detcontact']);
         Route::get('/admin/user/viscontact/del/{id}', [AdminController::class, 'delcontact']);
         //Page Adjustments
+        //Base
         Route::get('/admin/page/change_base', [AdminController::class, 'getbase'])->name('adjbase');
         Route::post('/admin/page/edit_base', [AdminController::class, 'base_edit'])->name('edtbase');
+        //Home
         Route::get('/admin/page/change_home', [AdminController::class, 'gethome'])->name('adjhome');
         Route::post('/admin/page/edit_home', [AdminController::class, 'act_home'])->name('edthome');
         Route::post('/admin/page/ch_corousel', [AdminController::class, 'chbg_home'])->name('chchome');
+        //About
         Route::get('/admin/page/change_about', [AdminController::class, 'getabout'])->name('adjabout');
         Route::post('/admin/page/edit_about', [AdminController::class, 'about_edit'])->name('edtabout');
+        //Service
+        Route::get('/admin/page/service', [AdminController::class, 'getservice'])->name('adjservice');
+        Route::view('/admin/page/service/add', 'admin.pageadj.addservice')->name('addservice');
+        Route::post('/admin/page/service/save', [AdminController::class, 'add_service'])->name('addsvc');
+        Route::get('/admin/page/service/edit/{id}', [AdminController::class, 'editsvc']);
+        Route::post('/admin/page/service/edit/save/{id}', [AdminController::class, 'act_editsvc']);
+        Route::get('/admin/page/service/delete/{id}', [AdminController::class, 'delsvc']);
     });
     Route::group(['middleware' => ['cek_level:staff']], function () {
         Route::view('/staff/dashboard', 'admin.test');

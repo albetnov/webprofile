@@ -19,4 +19,24 @@ class AdminModel extends Model
     {
         DB::table('apage')->update($data);
     }
+
+    public function SaveService($data)
+    {
+        DB::table('spage')->insert($data);
+    }
+
+    public function DetService($id)
+    {
+        return DB::table('spage')->where('id', '=', $id)->first();
+    }
+
+    public function updService($data, $id)
+    {
+        DB::table('spage')->where('id', '=', $id)->update($data);
+    }
+
+    public function delService($id)
+    {
+        DB::table('spage')->where('id', '=', $id)->delete();
+    }
 }
