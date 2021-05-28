@@ -50,6 +50,8 @@ class build_app extends Command
             $this->info('It may take longer depend on your Server Disk Types: SSD/HDD.');
             Artisan::call('db:seed --class=ContactTest');
             $this->info('Massive Lag on the way xD.');
+            $this->info('Contact Seed finish.');
+            exit();
         }
         Artisan::call('migrate:fresh');
         Artisan::call('db:seed --class=apage');

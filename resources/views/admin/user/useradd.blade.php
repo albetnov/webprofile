@@ -103,7 +103,6 @@
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-                            @if (session('level') === 'admin')
                                 <div class="form-group">
                                     <label>Level:</label>
                                     <select name="level" class="form-select">
@@ -115,7 +114,6 @@
                                         <p class="text-danger">{{ $message }}</p>
                                     @enderror
                                 </div>
-                            @endif
                             <div class="form-group">
                                 <button type="button" onclick="location.href='{{ route('useracc') }}'"
                                     class="btn btn-sm btn-secondary"><i class="fas fa-arrow-left"></i></button>

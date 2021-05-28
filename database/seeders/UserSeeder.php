@@ -42,6 +42,20 @@ class UserSeeder extends Seeder
                 'password' => bcrypt('robby123'),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
+            ],
+            [
+                'id' => '3',
+                'name' => 'Felix',
+                'pro_pic' => 'propic3.jpg',
+                'work_rank' => 'Lead Programmer',
+                'level' => 'staff',
+                'username' => 'felix',
+                'ig_link' => 'https://instagram.com/felix.dev.net/',
+                'fb_link' => 'https://www.facebook.com/felix.dev.net',
+                'email' => 'felix@dev.net',
+                'password' => bcrypt('felix123'),
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ]
         ]);
     }
