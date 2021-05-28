@@ -58,21 +58,21 @@
                                                 onclick="location.href='{{ url('admin/user/viscontact/detail/' . $gc->id) }}'"><i
                                                     class="fas fa-eye"></i></button></td>
                                         <td><button class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                                                data-bs-target="#hapusUser{{ $gc->id }}"><i
+                                                data-bs-target="#hapusKontak{{ $gc->id }}"><i
                                                     class="fas fa-trash"></i></button></td>
                                     </tr>
                                     {{-- Modal Start --}}
-                                    <div class="modal fade" id="hapusUser{{ $gc->id }}" data-bs-backdrop="static"
+                                    <div class="modal fade" id="hapusKontak{{ $gc->id }}" data-bs-backdrop="static"
                                         tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Delete User</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Delete Contact</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Are you sure you want to delete user, {{ $gc->name }} ?
+                                                    Are you sure you want to delete contact, {{ $gc->name_contact }} ?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-success" data-bs-dismiss="modal"><i
